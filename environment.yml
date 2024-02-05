@@ -1,0 +1,13 @@
+name: gmm
+channels:
+- conda-forge
+dependencies:
+- matplotlib
+- numpy
+- opencv
+- pytest
+- python=3.10
+- scikit-image
+- scikit-learn
+- setuptools
+
