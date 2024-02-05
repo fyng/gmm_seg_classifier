@@ -1,7 +1,7 @@
 import numpy as np
 
 class GaussianMixtureModel:
-    def __init__(self, n_components, n_iter, tol, verbose):
+    def __init__(self, n_components, n_iter=1000, tol=1e-3, verbose=True):
         self.n_components = n_components 
         self.n_iter = n_iter
         self.tol = tol
@@ -12,11 +12,10 @@ class GaussianMixtureModel:
         
     def fit(self, X):
         n_samples, n_features = X.shape
-        # Initialization
         np.random.seed(0)  # For reproducibility
 
-        #FIXME: i don't trust the initializations
-        self.means = X[np.random.choice(n_samples, self.n_components, replacement=False)]
+        # Initialize mean as some random datapoints; covarance as identity; equal mixing coefficient
+        self.means = X[np.random.choice(n_samples, self.n_components, replacement=False)] # k x n_features
         self.covariances = np.array([np.eye(n_features) for _ in range(self.n_components)])
         self.mixing_coefficients = np.ones(self.n_components) / self.n_components
 
@@ -42,20 +41,14 @@ class GaussianMixtureModel:
         return attribution
 
     def _m_step(self, X, attribution): 
-        # FIXME: 
+        n_samples, _ = X.shape
         z = attribution.sum(axis=0) # n_components length vector
         for k in range(self.n_components):
             z_k = z[k]
-            self.mean[k] = (attribution[:,k] * X).sum(axis = 0) / z_k
+            self.mean[k] = (np.transpose(X) @ attribution[:,k]) / z_k
 
-            delta = X - self.mean
-
-            self.covariance[k] = 
-
-        self.mean = 1 / z_k * (np.transpose(attribution) @ X) # n_component x n_feature
-
-        delta = X - self.mean
-        self.covariance = 1/z_k
+            delta_t = np.transpose(X - self.mean[k])
+            self.covariance[k] = (delta_t @ attribution[:,k] @ delta_t) / z_k
 
         # n_samples = X.shape[0]
         #     for k in range(self.n_components):
@@ -83,4 +76,13 @@ class GaussianMixtureModel:
             ll += np.log(np.sum(self._multivariate_normal(X, self.mean[k], self.covariance[k])))
 
         return ll
+    
+    # def mean_(self):
+    #     return self.mean
+    
+    # def covariance_(self):
+    #     return self.covariance
+    
+    # def mixing_coeff_(self):
+    #     return self.mixing_coeff
 
