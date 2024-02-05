@@ -15,7 +15,7 @@ class GaussianMixtureModel:
         np.random.seed(0)  # For reproducibility
 
         # Initialize mean as some random datapoints; covarance as identity; equal mixing coefficient
-        self.means = X[np.random.choice(n_samples, self.n_components, replacement=False)] # k x n_features
+        self.means = X[np.random.choice(n_samples, self.n_components, replace=False)] # k x n_features
         self.covariances = np.array([np.eye(n_features) for _ in range(self.n_components)])
         self.mixing_coefficients = np.ones(self.n_components) / self.n_components
 
@@ -33,7 +33,7 @@ class GaussianMixtureModel:
 
     def _e_step(self, X):
         n_samples, _ = X.shape
-        attribution = np.zeros(n_samples, self.n_components)
+        attribution = np.zeros((n_samples, self.n_components))
         for k in range (self.n_components):
             attribution[:,k] = self.mixing_coeff[k] * self._multivariate_normal(X, self.mean[k], self.covariance[k])
         attribution /= attribution.sum(axis=1)
