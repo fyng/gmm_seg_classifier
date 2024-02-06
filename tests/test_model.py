@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from gmm_seg_classifier.gmm import GaussianMixtureModel as GMM
+from gmm_seg_classifier import GaussianModel, GaussianMixtureModel
 from sklearn.mixture import GaussianMixture
 
 class TestGMM:
@@ -33,7 +33,7 @@ class TestGMM:
         return samples
     
     def test_fit_gmm(self, data_fixture, means_fixture, covariance_fixture, weights_fixture):
-        model = GMM(n_components=3, tol=1e-5)
+        model = GaussianMixtureModel(n_components=3, tol=1e-5)
         model.fit(data_fixture)
 
         print(model.means)
@@ -56,3 +56,32 @@ class TestGMM:
         assert np.allclose(model.weights_, weights_fixture, rtol = 0.1, atol = 0.1)
         assert np.allclose(model.covariances_, covariance_fixture, rtol = 0.1, atol = 0.1)
         
+
+
+class TestGaussian:
+    @pytest.fixture
+    def mean_fixture(self):
+        return np.array([100, 15, 150])
+    
+    @pytest.fixture
+    def cov_fixture(self):
+        return np.array([
+            [1, 0.5, 0.1],
+            [0.5, 1, 0.1],
+            [0.1, 0.1, 1]
+        ])
+    
+    @pytest.fixture
+    def data_fixture(self, mean_fixture, cov_fixture):
+        n_sample = 2000
+        return np.random.multivariate_normal(mean_fixture, cov_fixture, size=n_sample)
+    
+    def test_gaussian_model(self, mean_fixture, cov_fixture, data_fixture):
+        model = GaussianModel()
+        model.fit(data_fixture)
+
+        print(model.mean)
+        print(model.variance)
+
+        assert np.allclose(model.mean, mean_fixture, rtol=1e-2, atol = 1e-2)
+        assert np.allclose(model.variance, cov_fixture, rtol=0.1, atol=0.1)
