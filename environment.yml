@@ -2,7 +2,9 @@ name: gmm
 channels:
 - conda-forge
 dependencies:
+- jupyter
 - matplotlib
+- notebook
 - numpy
 - opencv
 - pytest
