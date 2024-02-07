@@ -94,3 +94,15 @@ class TestGaussian:
         p2 = model_cached.predict(mean_fixture)
 
         assert np.isclose(p1, p2)
+
+    def test_gaussian_model_save_and_load(self, data_fixture):
+        fp = 'test_files/model1_params.json'
+        model1 = GaussianModel()
+        model1.fit(data_fixture)
+        model1.save_to_json(fp)
+
+        model2 = GaussianModel()
+        model2.load(fp)
+
+        assert np.allclose(model1.mean_(), model2.mean_())
+        assert np.allclose(model1.variance_(), model2.variance_())
