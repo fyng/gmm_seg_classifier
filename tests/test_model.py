@@ -74,14 +74,23 @@ class TestGaussian:
     @pytest.fixture
     def data_fixture(self, mean_fixture, cov_fixture):
         n_sample = 2000
-        return np.random.multivariate_normal(mean_fixture, cov_fixture, size=n_sample)
+        return (np.rint(np.random.multivariate_normal(mean_fixture, cov_fixture, size=n_sample))).astype(np.uint8)
     
-    def test_gaussian_model(self, mean_fixture, cov_fixture, data_fixture):
+    def test_fit_gaussian_model(self, mean_fixture, cov_fixture, data_fixture):
         model = GaussianModel()
         model.fit(data_fixture)
 
-        print(model.mean)
-        print(model.variance)
+        assert np.allclose(model.mean_(), mean_fixture, rtol=1e-2, atol = 1e-2)
+        assert np.allclose(model.variance_(), cov_fixture, rtol=0.1, atol=0.1)
 
-        assert np.allclose(model.mean, mean_fixture, rtol=1e-2, atol = 1e-2)
-        assert np.allclose(model.variance, cov_fixture, rtol=0.1, atol=0.1)
+    def test_predict_gaussian_model_quantized(self, data_fixture, mean_fixture):
+        model = GaussianModel()
+        model.fit(data_fixture)
+
+        model_cached = GaussianModel(cache=True)
+        model_cached.fit(data_fixture)
+
+        p1 = model.predict(mean_fixture)
+        p2 = model_cached.predict(mean_fixture)
+
+        assert np.isclose(p1, p2)
