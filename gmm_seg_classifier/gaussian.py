@@ -1,5 +1,7 @@
 import numpy as np
 import itertools
+import json
+import codecs
 
 class GaussianModel:
     def __init__(self, cache=False, n_bits=6):
@@ -22,11 +24,59 @@ class GaussianModel:
             self.mean_quantized = np.mean(X_q, axis=0)
             self.variance_quantized = np.cov(X_q, rowvar=0)
 
+    def save_to_json(self, filepath):
+        # https://stackoverflow.com/questions/26646362/numpy-array-is-not-json-serializable
+        params = {}
+        params['mean'] = self.mean.tolist()
+        params['variance'] = self.variance.tolist()
+        if self.mean_quantized:
+            params['mean_q'] = self.mean_quantized().tolist()
+        if self.variance_quantized:
+            params['variance_q'] = self.variance_quantized.tolist()
+
+        # FIXME: probably a bad idea to serialize the table.
+        # implement some checks to recache on first call to predict_cached()
+        # if self.table:
+        #     pass
+
+        json.dump(params, codecs.open(filepath, 'w', encoding='utf-8'), 
+            separators=(',', ':'), 
+            sort_keys=True, 
+            indent=4)
+
+    def load(self, filepath):
+        obj_text = codecs.open(filepath, 'r', encoding='utf-8').read()
+        params = json.loads(obj_text)
+
+        if 'mean' in params:
+            self.mean = np.array(params['mean'])
+        else:
+            raise RuntimeWarning('Cannot load model: no param \"mean\"')
+
+        if 'variance' in params:
+            self.variance = np.array(params['variance'])
+        else: 
+            raise RuntimeWarning('Cannot load model: no param \"variance\"')
+        
+        if 'variance_q' in params:
+            self.variance_quantized = np.array(params['variance_q'])
+        else: 
+            self.cache = False
+
+        if 'mean_q' in params:
+            self.mean_quantized = np.array(params['mean_q'])
+        else: 
+            self.cache = False
+
+
     def predict(self, X):
-        # predict with full model
+        # p(x|y), with full model
         X = X.reshape(1, -1)
-        # p(x|y)
         return self._multivariate_normal(X, self.mean, self.variance)
+    
+    def posterior(self, X, prior):
+        pass
+
 
     def predict_cached(self, X):
         #FIXME: somehow it's really bad on real images even though test suite is passing
