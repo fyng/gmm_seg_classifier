@@ -2,6 +2,7 @@ name: gmm
 channels:
 - conda-forge
 dependencies:
+- pip
 - jupyter
 - matplotlib
 - notebook
@@ -12,4 +13,8 @@ dependencies:
 - scikit-image
 - scikit-learn
 - setuptools
+
+- pip:
+  - git+https://github.com/jdoepfert/roipoly.py
+
 
