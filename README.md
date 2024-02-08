@@ -26,7 +26,8 @@ micromamba activate gmm
 pip install .
 ```
 
-4. Run the model. In `main.py`, update the directory of the test folder. Then run
+4. Run the model. 
+In `main.py`, update the directory of the test folder. Then run
 ```
 python main.py
 ```
