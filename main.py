@@ -57,7 +57,7 @@ def draw_triangle_around_positive_pixels(image, thresh, prior):
 
         # geometry constraint
         w_h_ratio = 7.5 / 17
-        if math.isclose((w / h), w_h_ratio, rel_tol=0.4):
+        if math.isclose((w / h), w_h_ratio, rel_tol=0.28):
             triangles.append(t)
             cv2.drawContours(image, [t], 0, (0, 255, 0), 2)  # Green, tickness 2
 
