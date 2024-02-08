@@ -1,5 +1,6 @@
 # gmm_seg_classifier
 Image segmentation and classification using Gaussian Mixture Models
+![examples](examples.png)
 
 # Usage
 Install micromamba or mamba as the package manager. To install micromamba, refer to the [installation guide](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html)
@@ -21,13 +22,14 @@ micromamba env create -f environment.yml
 micromamba activate gmm
 ```
 
-3. Local installation of model
+3. Install the model
 ```
 pip install .
 ```
 
-4. Run the model. 
+4. Run the model
 In `main.py`, update the directory of the test folder. Then run
 ```
 python main.py
 ```
+
