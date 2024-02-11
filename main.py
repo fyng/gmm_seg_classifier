@@ -82,7 +82,7 @@ def triangle_geometry(triangle):
 
 if __name__ == "__main__":
     # FIXME: change to appropriate folder
-    folder = "data/test/"
+    folder = "data/img/test/"
 
     cone_gaussian_model = GaussianModel()
     bg_gaussian_model = GaussianModel()
@@ -96,20 +96,21 @@ if __name__ == "__main__":
     thresh = 0.99
 
     for filename in os.listdir(folder):
-        print(filename) 
-        img = read_img_to_array(os.path.join(folder,filename))
-        img_overlay, triangles = draw_triangle_around_positive_pixels(img, thresh, prior)
-        
-        x = None
-        y = None
-        d = 0
-        for t in triangles:
-            x, y, d = triangle_geometry(t)
-            # draw blue dot at centroid
-            cv2.circle(img_overlay, (x,y), radius=4, color=(0, 0, 255), thickness=-1)
-            print(f'({x},{y}), distance = {d:.3f}')
+        if filename.endswith(('.png', 'jpg')):
+            print(filename) 
+            img = read_img_to_array(os.path.join(folder,filename))
+            img_overlay, triangles = draw_triangle_around_positive_pixels(img, thresh, prior)
+            
+            x = None
+            y = None
+            d = 0
+            for t in triangles:
+                x, y, d = triangle_geometry(t)
+                # draw blue dot at centroid
+                cv2.circle(img_overlay, (x,y), radius=4, color=(0, 0, 255), thickness=-1)
+                print(f'({x},{y}), distance = {d:.3f}')
 
-        img_overlay = cv2.cvtColor(img_overlay, cv2.COLOR_BGR2RGB)
-        cv2.imshow(f'{filename}: distance = {d:.3f}' ,img_overlay)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+            img_overlay = cv2.cvtColor(img_overlay, cv2.COLOR_BGR2RGB)
+            cv2.imshow(f'{filename}: distance = {d:.3f}' ,img_overlay)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
