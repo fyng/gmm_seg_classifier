@@ -22,7 +22,7 @@ class TestGMM:
 
     @pytest.fixture
     def data_fixture(self, means_fixture, covariance_fixture, weights_fixture):
-        n_samples = 10
+        n_samples = 1000
         n_components = len(weights_fixture)
 
         component_indices = np.random.choice(n_components, size=n_samples)

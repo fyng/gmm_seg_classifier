@@ -1,7 +1,9 @@
 import numpy as np
+import json
+import codecs
 
 class GaussianMixtureModel:
-    def __init__(self, n_components, n_iter=100, tol=1e-8, verbose=True):
+    def __init__(self, n_components, n_iter=500, tol=1e-8, verbose=True):
         self.n_components = n_components 
         self.n_iter = n_iter
         self.tol = tol
@@ -38,10 +40,35 @@ class GaussianMixtureModel:
         pass
 
     def save_to_json(self, filepath):
-        pass
+            # https://stackoverflow.com/questions/26646362/numpy-array-is-not-json-serializable
+            params = {}
+            params['means'] = self.means.tolist()
+            params['covariance'] = self.covariance.tolist()
+            params['mixing_coeff'] = self.mixing_coeff.tolist()
+
+            json.dump(params, codecs.open(filepath, 'w', encoding='utf-8'), 
+                separators=(',', ':'), 
+                sort_keys=True, 
+                indent=4)
 
     def load(self, filepath):
-        pass
+        obj_text = codecs.open(filepath, 'r', encoding='utf-8').read()
+        params = json.loads(obj_text)
+
+        if 'means' in params:
+            self.means = np.array(params['means'])
+        else:
+            raise RuntimeWarning('Cannot load model: no param \"mean\"')
+
+        if 'covariance' in params:
+            self.covariance = np.array(params['covariance'])
+        else: 
+            raise RuntimeWarning('Cannot load model: no param \"covariance\"')
+        
+        if 'mixing_coeff' in params:
+            self.mixing_coeff = np.array(params['mixing_coeff'])
+        else: 
+            raise RuntimeWarning('Cannot load model: no param \"mixing coefficients\"')
 
 
     def _e_step(self, X):
