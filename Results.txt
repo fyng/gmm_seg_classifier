@@ -1,6 +1,6 @@
-ImageNo = [3], CentroidX = 318.000, CentroidY = 414.000, Distance = 7.309
-ImageNo = [2], CentroidX = 475.000, CentroidY = 458.000, Distance = 3.552
-ImageNo = [1], CentroidX = 228.000, CentroidY = 462.000, Distance = 7.583
-ImageNo = [5], CentroidX = 261.000, CentroidY = 408.000, Distance = 7.336
-ImageNo = [5], CentroidX = 346.000, CentroidY = 501.000, Distance = 2.810
-ImageNo = [4], CentroidX = 300.000, CentroidY = 404.000, Distance = 20.689
+ImageNo = [3], CentroidX = 319.000, CentroidY = 453.000, Distance = 7.622
+ImageNo = [2], CentroidX = 470.000, CentroidY = 531.000, Distance = 3.737
+ImageNo = [1], CentroidX = 228.000, CentroidY = 522.000, Distance = 7.583
+ImageNo = [5], CentroidX = 261.000, CentroidY = 451.000, Distance = 7.336
+ImageNo = [5], CentroidX = 346.000, CentroidY = 600.000, Distance = 2.825
+ImageNo = [4], CentroidX = 301.000, CentroidY = 419.000, Distance = 21.378
