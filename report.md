@@ -58,51 +58,54 @@ To calculate the distance of a cone in the test set, I calculate the distance to
 **Test dataset:**
 
 ```
-ImageNo = [3], CentroidX = 318.000, CentroidY = 414.000, Distance = 7.309
-ImageNo = [2], CentroidX = 475.000, CentroidY = 458.000, Distance = 3.552
-ImageNo = [1], CentroidX = 228.000, CentroidY = 462.000, Distance = 7.583
-ImageNo = [5], CentroidX = 261.000, CentroidY = 408.000, Distance = 7.336
-ImageNo = [5], CentroidX = 346.000, CentroidY = 501.000, Distance = 2.810
-ImageNo = [4], CentroidX = 300.000, CentroidY = 404.000, Distance = 20.689
+ImageNo = [3], CentroidX = 319.000, CentroidY = 453.000, Distance = 7.622
+ImageNo = [2], CentroidX = 470.000, CentroidY = 531.000, Distance = 3.737
+ImageNo = [1], CentroidX = 228.000, CentroidY = 522.000, Distance = 7.583
+ImageNo = [5], CentroidX = 261.000, CentroidY = 451.000, Distance = 7.336
+ImageNo = [5], CentroidX = 346.000, CentroidY = 600.000, Distance = 2.825
+ImageNo = [4], CentroidX = 301.000, CentroidY = 419.000, Distance = 21.378
 ```
 ![Test Visualization](plots/test_split.png)
 ---
 
 Train split:
 ```
-ImageNo = [12], CentroidX = 429.000, CentroidY = 458.000, Distance = 7.044
-ImageNo = [17], CentroidX = 343.000, CentroidY = 470.000, Distance = 7.594
-ImageNo = [4], CentroidX = 163.000, CentroidY = 247.000, Distance = 4.814
-ImageNo = [29], CentroidX = 310.000, CentroidY = 508.000, Distance = 6.831
-ImageNo = [2], CentroidX = 51.000, CentroidY = 506.000, Distance = 14.567
-ImageNo = [2], CentroidX = 362.000, CentroidY = 437.000, Distance = 28.504
-ImageNo = [2], CentroidX = 162.000, CentroidY = 440.000, Distance = 8.526
-ImageNo = [7], CentroidX = 590.000, CentroidY = 726.000, Distance = 61.607
-ImageNo = [7], CentroidX = 454.000, CentroidY = 554.000, Distance = 8.930
-ImageNo = [10], CentroidX = 490.000, CentroidY = 402.000, Distance = 18.229
-ImageNo = [21], CentroidX = 316.000, CentroidY = 362.000, Distance = 9.828
-ImageNo = [27], CentroidX = 97.000, CentroidY = 407.000, Distance = 28.590
-ImageNo = [31], CentroidX = 296.000, CentroidY = 578.000, Distance = 9.565
-ImageNo = [20], CentroidX = 180.000, CentroidY = 454.000, Distance = 7.202
-ImageNo = [5], CentroidX = 2.000, CentroidY = 411.000, Distance = 79.567
-ImageNo = [5], CentroidX = 132.000, CentroidY = 385.000, Distance = 23.684
-ImageNo = [22], CentroidX = 480.000, CentroidY = 302.000, Distance = 6.347
-ImageNo = [26], CentroidX = 482.000, CentroidY = 414.000, Distance = 29.792
-ImageNo = [24], CentroidX = 321.000, CentroidY = 407.000, Distance = 11.562
-ImageNo = [3], CentroidX = 68.000, CentroidY = 496.000, Distance = 13.384
-ImageNo = [15], CentroidX = 425.000, CentroidY = 385.000, Distance = 2.865
-ImageNo = [14], CentroidX = 327.000, CentroidY = 527.000, Distance = 14.583
-ImageNo = [16], CentroidX = 439.000, CentroidY = 457.000, Distance = 23.986
+ImageNo = [16], CentroidX = 439.000, CentroidY = 470.000, Distance = 23.986
+ImageNo = [20], CentroidX = 181.000, CentroidY = 493.000, Distance = 7.270
+ImageNo = [1], CentroidX = 313.000, CentroidY = 431.000, Distance = 30.804
+ImageNo = [1], CentroidX = 345.000, CentroidY = 253.000, Distance = 59.478
+ImageNo = [29], CentroidX = 310.000, CentroidY = 566.000, Distance = 6.831
+ImageNo = [7], CentroidX = 454.000, CentroidY = 585.000, Distance = 9.257
+ImageNo = [2], CentroidX = 58.000, CentroidY = 521.000, Distance = 22.435
+ImageNo = [2], CentroidX = 362.000, CentroidY = 446.000, Distance = 32.460
+ImageNo = [2], CentroidX = 161.000, CentroidY = 471.000, Distance = 8.609
+ImageNo = [26], CentroidX = 482.000, CentroidY = 424.000, Distance = 30.280
+ImageNo = [31], CentroidX = 298.000, CentroidY = 613.000, Distance = 9.234
+ImageNo = [22], CentroidX = 482.000, CentroidY = 348.000, Distance = 6.312
+ImageNo = [12], CentroidX = 429.000, CentroidY = 498.000, Distance = 7.109
+ImageNo = [17], CentroidX = 342.000, CentroidY = 511.000, Distance = 7.816
+ImageNo = [19], CentroidX = 427.000, CentroidY = 410.000, Distance = 14.355
+ImageNo = [4], CentroidX = 161.000, CentroidY = 314.000, Distance = 4.934
+ImageNo = [14], CentroidX = 327.000, CentroidY = 547.000, Distance = 14.583
+ImageNo = [27], CentroidX = 97.000, CentroidY = 417.000, Distance = 28.590
+ImageNo = [15], CentroidX = 423.000, CentroidY = 483.000, Distance = 2.920
+ImageNo = [13], CentroidX = 426.000, CentroidY = 490.000, Distance = 5.331
+ImageNo = [21], CentroidX = 315.000, CentroidY = 393.000, Distance = 10.134
+ImageNo = [5], CentroidX = 132.000, CentroidY = 397.000, Distance = 24.306
+ImageNo = [6], CentroidX = 15.000, CentroidY = 683.000, Distance = 11.250
+ImageNo = [6], CentroidX = 534.000, CentroidY = 481.000, Distance = 8.554
+ImageNo = [3], CentroidX = 68.000, CentroidY = 516.000, Distance = 14.780
+ImageNo = [18], CentroidX = 234.000, CentroidY = 562.000, Distance = 4.666
+ImageNo = [24], CentroidX = 323.000, CentroidY = 434.000, Distance = 11.172
 ```
 ![Train Visualization](plots/train_split.png)
 
 Validation split:
 ```
-ImageNo = [1], CentroidX = 313.000, CentroidY = 421.000, Distance = 30.804
-ImageNo = [6], CentroidX = 534.000, CentroidY = 448.000, Distance = 8.369
-ImageNo = [18], CentroidX = 235.000, CentroidY = 501.000, Distance = 4.609
-ImageNo = [13], CentroidX = 428.000, CentroidY = 437.000, Distance = 5.224
-ImageNo = [19], CentroidX = 427.000, CentroidY = 389.000, Distance = 14.355
+ImageNo = [18], CentroidX = 234.000, CentroidY = 562.000, Distance = 4.666
+ImageNo = [7], CentroidX = 454.000, CentroidY = 585.000, Distance = 9.257
+ImageNo = [15], CentroidX = 423.000, CentroidY = 483.000, Distance = 2.920
+ImageNo = [26], CentroidX = 482.000, CentroidY = 424.000, Distance = 30.280
 ```
 ![Validation Visualization](plots/val_split.png)
 
