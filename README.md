@@ -33,3 +33,5 @@ In `main.py`, update the directory of the test folder. Then run
 python main.py
 ```
 
+# Acknowledgement
+ECE 5242 - Intelligent Autonomous Systems taught by Prof Daniel Lee & Travers Rhodes 
